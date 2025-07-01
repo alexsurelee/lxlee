@@ -48,10 +48,10 @@ pnpm run build
 To build and run using Docker:
 
 ```bash
-docker build -t my-app .
+docker build -t lxlee .
 
 # Run the container
-docker run -p 3000:3000 my-app
+docker run -p 3000:3000 lxlee
 ```
 
 The containerized application can be deployed to any platform that supports Docker, including:
@@ -79,7 +79,7 @@ Make sure to deploy the output of `pnpm run build`
 
 ## Styling
 
-This project uses css modules for styling. 
+This project uses css modules for styling.
 
 ---
 
