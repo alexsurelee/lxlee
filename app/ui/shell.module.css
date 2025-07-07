@@ -1,0 +1,285 @@
+.shell {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto auto auto;
+  grid-template-areas:
+    "header header header header header header header header header header header header"
+    "sidebar main main main main main main main main supplementary supplementary supplementary"
+    "footer footer footer footer footer footer footer footer footer footer footer footer";
+  gap: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+  background-color: var(--bg-light);
+  line-height: 1.6;
+  color: var(--text-light);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+@media (prefers-color-scheme: dark) {
+  .shell {
+    background-color: var(--bg-dark);
+    color: var(--text-dark);
+  }
+}
+
+.header {
+  grid-area: header;
+  background: var(--bg-light);
+  padding: 1.5rem;
+  border: 2px solid var(--text-light);
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+@media (prefers-color-scheme: dark) {
+  .header {
+    background: var(--bg-dark);
+    border-color: var(--text-dark);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.masthead {
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin: 0 0 1rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  /* font-family: "Times New Roman", Times, serif; */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  color: var(--text-light);
+  transition: color 0.3s ease;
+}
+
+@media (prefers-color-scheme: dark) {
+  .masthead {
+    color: var(--text-dark);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.paperInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  border-top: 1px solid var(--text-light);
+  padding-top: 0.5rem;
+  color: var(--text-light);
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+@media (prefers-color-scheme: dark) {
+  .paperInfo {
+    border-color: var(--text-dark);
+    color: var(--text-dark);
+  }
+}
+
+.paperInfo span {
+  flex: 1;
+  text-align: center;
+}
+
+.main {
+  grid-area: main;
+  background: var(--bg-light);
+  padding: 1.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  transition: background-color 0.3s ease, border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+@media (prefers-color-scheme: dark) {
+  .main {
+    background: var(--bg-dark);
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.main h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 3px solid var(--text-light);
+  padding-bottom: 0.5rem;
+  color: var(--text-light);
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+@media (prefers-color-scheme: dark) {
+  .main h1 {
+    border-color: var(--text-dark);
+    color: var(--text-dark);
+  }
+}
+
+.main h2 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin: 1.5rem 0 1rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text-light);
+  transition: color 0.3s ease;
+}
+
+@media (prefers-color-scheme: dark) {
+  .main h2 {
+    color: var(--text-dark);
+  }
+}
+
+.main h3 {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin: 1rem 0 0.5rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--text-light);
+  transition: color 0.3s ease;
+}
+
+@media (prefers-color-scheme: dark) {
+  .main h3 {
+    color: var(--text-dark);
+  }
+}
+
+.main p {
+  text-align: justify;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  color: var(--text-light);
+  transition: color 0.3s ease;
+}
+
+@media (prefers-color-scheme: dark) {
+  .main p {
+    color: var(--text-dark);
+  }
+}
+
+.supplementary {
+  grid-area: supplementary;
+  background: var(--bg-light);
+  padding: 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  transition: background-color 0.3s ease, border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+@media (prefers-color-scheme: dark) {
+  .supplementary {
+    background: var(--bg-dark);
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.supplementary h2 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  border-bottom: 2px solid var(--text-light);
+  padding-bottom: 0.25rem;
+  color: var(--text-light);
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+@media (prefers-color-scheme: dark) {
+  .supplementary h2 {
+    border-color: var(--text-dark);
+    color: var(--text-dark);
+  }
+}
+
+.supplementary h3 {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0.75rem 0 0.5rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  color: var(--text-light);
+  transition: color 0.3s ease;
+}
+
+@media (prefers-color-scheme: dark) {
+  .supplementary h3 {
+    color: var(--text-dark);
+  }
+}
+
+.supplementary p {
+  font-size: 0.9rem;
+  text-align: justify;
+  margin-bottom: 0.75rem;
+  color: var(--text-light);
+  transition: color 0.3s ease;
+}
+
+@media (prefers-color-scheme: dark) {
+  .supplementary p {
+    color: var(--text-dark);
+  }
+}
+
+.footer {
+  grid-area: footer;
+  background: var(--text-light);
+  color: var(--bg-light);
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+  border-radius: 2px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+@media (prefers-color-scheme: dark) {
+  .footer {
+    background: var(--text-dark);
+    color: var(--bg-dark);
+  }
+}
+
+/* Newspaper-style responsive design */
+@media (max-width: 768px) {
+  .shell {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header"
+      "sidebar"
+      "main"
+      "supplementary"
+      "footer";
+    gap: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  .main h1 {
+    font-size: 2rem;
+  }
+
+  .main h2 {
+    font-size: 1.5rem;
+  }
+
+  .main h3 {
+    font-size: 1.1rem;
+  }
+}

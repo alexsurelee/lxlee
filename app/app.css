@@ -1,5 +1,27 @@
+:root {
+  --eerie-black: #21201c;
+  --ivory: #f7faf0;
+  --ghost-white: #f8f4f9;
+  --orange: #e57a44;
+  --black: #050609;
+
+  --bg-light: var(--ivory);
+  --bg-dark: var(--eerie-black);
+
+  --text-light: var(--black);
+  --text-dark: var(--ghost-white);
+}
+
 html,
 body {
   /* todo: remove trial font */
   font-family: "Berkeley Mono Trial", "Courier Prime", monospace;
+  background-color: var(--bg-light);
+  color: var(--text-light);
+
+  @media (prefers-color-scheme: dark) {
+    background-color: var(--bg-dark);
+    color: var(--text-dark);
+  }
+  padding-top: 5dvh;
 }
