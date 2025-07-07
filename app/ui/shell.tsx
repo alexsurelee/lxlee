@@ -1,15 +1,18 @@
 import styles from "./shell.module.css";
 import { Sidebar } from "./sidebar";
 import { Link } from "react-router";
+import type { BlogPost } from "~/utils/posts";
 
 export function Shell({
   children,
   supplementary,
   date,
+  posts,
 }: {
   children: React.ReactNode;
   supplementary: React.ReactNode;
   date?: string;
+  posts?: BlogPost[];
 }) {
   const displayDate =
     date ||
@@ -37,7 +40,7 @@ export function Shell({
           <span>Price: {displayPrice}</span>
         </div>
       </header>
-      <Sidebar />
+      <Sidebar posts={posts} />
       <div className={styles.main}>{children}</div>
       <div className={styles.supplementary}>{supplementary}</div>
       <div className={styles.footer}>

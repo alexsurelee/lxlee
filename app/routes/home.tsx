@@ -1,4 +1,6 @@
 import { Shell } from "~/ui/shell";
+import { getAllPosts } from "~/utils/posts";
+import { useLoaderData } from "react-router";
 import type { Route } from "./+types/home";
 
 export function meta({}: Route.MetaArgs) {
@@ -8,7 +10,13 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
+export async function loader() {
+  const posts = await getAllPosts();
+  return { posts };
+}
+
 export default function Home() {
+  const { posts } = useLoaderData<typeof loader>();
   const currentDate = new Date().toLocaleDateString("en-NZ", {
     weekday: "long",
     year: "numeric",
@@ -17,7 +25,11 @@ export default function Home() {
   });
 
   return (
-    <Shell supplementary={<div>Supplementary</div>} date={currentDate}>
+    <Shell
+      supplementary={<div>Supplementary</div>}
+      date={currentDate}
+      posts={posts}
+    >
       <div>Home</div>
     </Shell>
   );

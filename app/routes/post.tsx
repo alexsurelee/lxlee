@@ -1,6 +1,8 @@
 import { loadMdx } from "react-router-mdx/server";
 import { Shell } from "~/ui/shell";
 import { useMdxComponent, useMdxAttributes } from "react-router-mdx/client";
+import { getAllPosts } from "~/utils/posts";
+import { useLoaderData } from "react-router";
 
 export function meta({ data }: { data: any }) {
   const attributes = data?.attributes;
@@ -17,12 +19,15 @@ export function meta({ data }: { data: any }) {
 }
 
 export async function loader({ request }: { request: Request }) {
-  return loadMdx(request);
+  const mdxData = await loadMdx(request);
+  const posts = await getAllPosts();
+  return { ...mdxData, posts };
 }
 
 export default function BlogPost() {
   const Component = useMdxComponent();
   const attributes = useMdxAttributes();
+  const { posts } = useLoaderData<typeof loader>();
 
   const displayDate = new Date(attributes.date).toLocaleDateString("en-NZ", {
     weekday: "long",
@@ -32,7 +37,11 @@ export default function BlogPost() {
   });
 
   return (
-    <Shell supplementary={<div>Blog Sidebar</div>} date={displayDate}>
+    <Shell
+      supplementary={<div>Blog Sidebar</div>}
+      date={displayDate}
+      posts={posts}
+    >
       <article>
         <h1>{attributes.title}</h1>
         <p>
