@@ -32,7 +32,7 @@ export function Shell({
     <div className={styles.shell}>
       <header className={styles.header}>
         <Link to="/" className={styles.mastheadLink}>
-          <h1 className={styles.masthead}>THE DAILY CHRONICLE</h1>
+          <h1 className={styles.masthead}>Alexander Lee</h1>
         </Link>
         <div className={styles.paperInfo}>
           <span>Vol. 1 No. 1</span>
