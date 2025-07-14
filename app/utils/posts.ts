@@ -22,7 +22,6 @@ export async function getAllPosts(): Promise<BlogPost[]> {
         const { data } = matter(fileContents);
 
         return {
-          slug: data.slug,
           title: data.title,
           author: data.author,
           date: data.date,

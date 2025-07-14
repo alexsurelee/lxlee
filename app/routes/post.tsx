@@ -13,8 +13,8 @@ export function meta({ data }: { data: any }) {
     ];
   }
   return [
-    { title: `Blog - ${attributes.slug} | lxlee` },
-    { name: "description", content: `Blog post: ${attributes.slug}` },
+    { title: `${attributes.title} | lxlee` },
+    { name: "description", content: `Blog post: ${attributes.title}` },
   ];
 }
 
