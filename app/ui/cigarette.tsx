@@ -76,6 +76,7 @@ const lightingCigarette = [
 ];
 
 const litCigarette = [
+  // credit to https://emojicombos.com/cigarette-ascii-art for original art
   [
     "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠻⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣄⠀⠀⠀",
     "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠻⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀",
