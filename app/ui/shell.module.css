@@ -57,6 +57,11 @@
 .mastheadLink {
   text-decoration: none;
   color: inherit;
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
