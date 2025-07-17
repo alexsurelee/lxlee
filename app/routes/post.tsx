@@ -3,8 +3,9 @@ import { Shell } from "~/ui/shell";
 import { useMdxComponent, useMdxAttributes } from "react-router-mdx/client";
 import { getAllPosts } from "~/utils/posts";
 import { useLoaderData } from "react-router";
+import type { Route } from "./+types/post";
 
-export function meta({ data }: { data: any }) {
+export function meta({ data }: Route.MetaArgs) {
   const attributes = data?.attributes;
   if (!attributes) {
     return [
