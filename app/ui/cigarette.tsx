@@ -252,7 +252,23 @@ const smokingCigarette = [
   ],
 ];
 
-type CigaretteState = "unlit" | "lighting" | "lit" | "smoking";
+const spentCigarette = [
+  [
+    "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+    "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+    "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+    "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+    "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+    "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+    "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+    "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+    "⠀⢀⣤⣤⣤⣤⡄⠀⣤⣤⣤⣤⣤⣤⠀⣄⢁⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+    "⠀⢸⣿⣿⣿⣿⡇⠀⣿⣿⣿⣿⣿⣿⠀⣿⢸⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+    "⠀⠈⠛⠛⠛⠛⠃⠀⠛⠛⠛⠛⠛⠛⠀⠋⠈⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
+  ],
+];
+
+type CigaretteState = "unlit" | "lighting" | "lit" | "smoking" | "spent";
 
 export function Cigarette() {
   const [cigaretteState, setCigaretteState] = useState<CigaretteState>("unlit");
@@ -274,6 +290,15 @@ export function Cigarette() {
         });
       } else if (cigaretteState === "lit") {
         setCurrentFrame((prev) => (prev + 1) % litCigarette.length);
+      } else if (cigaretteState === "smoking") {
+        setCurrentFrame((prev) => {
+          const nextFrame = prev + 1;
+          if (nextFrame >= smokingCigarette.length) {
+            setCigaretteState("spent");
+            return 0;
+          }
+          return nextFrame;
+        });
       }
     }, 500);
 
@@ -284,6 +309,17 @@ export function Cigarette() {
     if (cigaretteState === "unlit") {
       setCigaretteState("lighting");
       setCurrentFrame(0);
+      return;
+    }
+    if (cigaretteState === "lit") {
+      setCigaretteState("smoking");
+      setCurrentFrame(0);
+      return;
+    }
+    if (cigaretteState === "spent") {
+      setCigaretteState("unlit");
+      setCurrentFrame(0);
+      return;
     }
   };
 
@@ -295,6 +331,10 @@ export function Cigarette() {
         return lightingCigarette[currentFrame];
       case "lit":
         return litCigarette[currentFrame];
+      case "smoking":
+        return smokingCigarette[currentFrame];
+      case "spent":
+        return spentCigarette[currentFrame];
       default:
         return unlitCigarette;
     }
