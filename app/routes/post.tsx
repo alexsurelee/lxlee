@@ -1,5 +1,5 @@
 import { Shell } from "~/ui/shell";
-import { getAllPosts } from "~/utils/posts";
+import { getAllPosts, getReadingTime } from "~/utils/posts";
 import { useLoaderData } from "react-router";
 import type { Route } from "./+types/post";
 
@@ -28,7 +28,8 @@ export async function loader({ params }: { params: { slug: string } }) {
   if (!attributes) {
     throw new Response("Not Found", { status: 404 });
   }
-  return { slug: params.slug, attributes, posts };
+  const readingTime = await getReadingTime(params.slug);
+  return { slug: params.slug, attributes, posts, readingTime };
 }
 
 export const links: Route.LinksFunction = () => {
@@ -41,7 +42,8 @@ export const links: Route.LinksFunction = () => {
 };
 
 export default function BlogPost() {
-  const { slug, attributes, posts } = useLoaderData<typeof loader>();
+  const { slug, attributes, posts, readingTime } =
+    useLoaderData<typeof loader>();
   const Component = mdxModules[`../../posts/${slug}.mdx`].default;
 
   const displayDate = new Date(attributes.date).toLocaleDateString("en-NZ", {
@@ -56,6 +58,7 @@ export default function BlogPost() {
       supplementary={<div>Blog Sidebar</div>}
       date={displayDate}
       posts={posts}
+      readingTime={readingTime}
     >
       <article>
         <h1>{attributes.title}</h1>

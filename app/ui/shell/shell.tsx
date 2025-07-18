@@ -8,11 +8,13 @@ export function Shell({
   supplementary,
   date,
   posts,
+  readingTime,
 }: {
   children: React.ReactNode;
   supplementary: React.ReactNode;
   date?: string;
   posts?: BlogPost[];
+  readingTime?: string;
 }) {
   const displayDate =
     date ||
@@ -23,10 +25,7 @@ export function Shell({
       day: "numeric",
     });
 
-  const displayPrice = new Intl.NumberFormat("en-NZ", {
-    style: "currency",
-    currency: "NZD",
-  }).format(1.0);
+  const displayInfo = readingTime || "Auckland";
 
   return (
     <div className={styles.shell}>
@@ -37,7 +36,11 @@ export function Shell({
         <div className={styles.paperInfo}>
           <span>Vol. 1 No. 1</span>
           <span>{displayDate}</span>
-          <span>Price: {displayPrice}</span>
+          <span>
+            {readingTime
+              ? `Reading: ${displayInfo}`
+              : `Published from ${displayInfo}`}
+          </span>
         </div>
       </header>
       <Sidebar posts={posts} />
