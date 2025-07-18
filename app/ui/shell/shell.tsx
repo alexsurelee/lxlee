@@ -1,5 +1,5 @@
 import styles from "./shell.module.css";
-import { Sidebar } from "./sidebar";
+import { Sidebar } from "../sidebar";
 import { Link } from "react-router";
 import type { BlogPost } from "~/utils/posts";
 
