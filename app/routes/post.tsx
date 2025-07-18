@@ -1,9 +1,12 @@
-import { loadMdx } from "react-router-mdx/server";
 import { Shell } from "~/ui/shell";
-import { useMdxComponent, useMdxAttributes } from "react-router-mdx/client";
 import { getAllPosts } from "~/utils/posts";
 import { useLoaderData } from "react-router";
 import type { Route } from "./+types/post";
+
+// Eagerly import all MDX files at build time so they are available synchronously
+const mdxModules = import.meta.glob<{
+  default: React.ComponentType;
+}>("../../posts/*.mdx", { eager: true });
 
 export function meta({ data }: Route.MetaArgs) {
   const attributes = data?.attributes;
@@ -19,16 +22,27 @@ export function meta({ data }: Route.MetaArgs) {
   ];
 }
 
-export async function loader({ request }: { request: Request }) {
-  const mdxData = await loadMdx(request);
+export async function loader({ params }: { params: { slug: string } }) {
   const posts = await getAllPosts();
-  return { ...mdxData, posts };
+  const attributes = posts.find((post) => post.filename === params.slug);
+  if (!attributes) {
+    throw new Response("Not Found", { status: 404 });
+  }
+  return { slug: params.slug, attributes, posts };
 }
 
+export const links: Route.LinksFunction = () => {
+  return [
+    {
+      rel: "stylesheet",
+      href: "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/github-dark-dimmed.min.css",
+    },
+  ];
+};
+
 export default function BlogPost() {
-  const Component = useMdxComponent();
-  const attributes = useMdxAttributes();
-  const { posts } = useLoaderData<typeof loader>();
+  const { slug, attributes, posts } = useLoaderData<typeof loader>();
+  const Component = mdxModules[`../../posts/${slug}.mdx`].default;
 
   const displayDate = new Date(attributes.date).toLocaleDateString("en-NZ", {
     weekday: "long",
