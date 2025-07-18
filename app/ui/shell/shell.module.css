@@ -6,14 +6,14 @@
     "header header header header header header header header header header header header"
     "sidebar main main main main main main main main supplementary supplementary supplementary"
     "footer footer footer footer footer footer footer footer footer footer footer footer";
-  gap: 1rem;
+  gap: var(--spacing-sm);
   max-width: 1200px;
   margin: 0 auto;
-  padding: 1rem;
+  padding: var(--spacing-sm);
   background-color: var(--bg-light);
   line-height: 1.6;
   color: var(--text-light);
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: var(--transition-colors);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -26,32 +26,33 @@
 .header {
   grid-area: header;
   background: var(--bg-light);
-  padding: 1.5rem;
+  padding: var(--spacing-md);
   border: 2px solid var(--text-light);
   text-align: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 2px;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  box-shadow: var(--shadow-light);
+  border-radius: var(--radius-small);
+  transition: background-color var(--transition-fast),
+    border-color var(--transition-fast);
 }
 
 @media (prefers-color-scheme: dark) {
   .header {
     background: var(--bg-dark);
     border-color: var(--text-dark);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--shadow-dark);
   }
 }
 
 .masthead {
-  font-size: 3.5rem;
+  font-size: var(--font-size-6xl);
   font-weight: bold;
-  margin: 0 0 1rem 0;
+  margin: 0 0 var(--spacing-sm) 0;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: var(--letter-spacing-xl);
   /* font-family: "Times New Roman", Times, serif; */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  text-shadow: var(--text-shadow-light);
   color: var(--text-light);
-  transition: color 0.3s ease;
+  transition: color var(--transition-fast);
 }
 
 .mastheadLink {
@@ -67,7 +68,7 @@
 @media (prefers-color-scheme: dark) {
   .masthead {
     color: var(--text-dark);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    text-shadow: var(--text-shadow-dark);
   }
 }
 
@@ -75,14 +76,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 0.9rem;
+  font-size: var(--font-size-xs);
   font-weight: bold;
   text-transform: uppercase;
-  letter-spacing: 0.02em;
+  letter-spacing: var(--letter-spacing-sm);
   border-top: 1px solid var(--text-light);
-  padding-top: 0.5rem;
+  padding-top: var(--spacing-xs);
   color: var(--text-light);
-  transition: border-color 0.3s ease, color 0.3s ease;
+  transition: border-color var(--transition-fast), color var(--transition-fast);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -100,32 +101,31 @@
 .main {
   grid-area: main;
   background: var(--bg-light);
-  padding: 1.5rem;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 2px;
-  transition: background-color 0.3s ease, border-color 0.3s ease,
-    box-shadow 0.3s ease;
+  padding: var(--spacing-md);
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-light);
+  border-radius: var(--radius-small);
+  transition: var(--transition-full);
 }
 
 @media (prefers-color-scheme: dark) {
   .main {
     background: var(--bg-dark);
-    border-color: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    border-color: var(--border-dark);
+    box-shadow: var(--shadow-dark);
   }
 }
 
 .main h1 {
-  font-size: 2.5rem;
+  font-size: var(--font-size-5xl);
   font-weight: bold;
-  margin-bottom: 1rem;
+  margin-bottom: var(--spacing-sm);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: var(--letter-spacing-lg);
   border-bottom: 3px solid var(--text-light);
-  padding-bottom: 0.5rem;
+  padding-bottom: var(--spacing-xs);
   color: var(--text-light);
-  transition: border-color 0.3s ease, color 0.3s ease;
+  transition: border-color var(--transition-fast), color var(--transition-fast);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -136,13 +136,13 @@
 }
 
 .main h2 {
-  font-size: 1.8rem;
+  font-size: var(--font-size-3xl);
   font-weight: bold;
-  margin: 1.5rem 0 1rem 0;
+  margin: var(--spacing-md) 0 var(--spacing-sm) 0;
   text-transform: uppercase;
-  letter-spacing: 0.03em;
+  letter-spacing: var(--letter-spacing-md);
   color: var(--text-light);
-  transition: color 0.3s ease;
+  transition: color var(--transition-fast);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -152,13 +152,13 @@
 }
 
 .main h3 {
-  font-size: 1.3rem;
+  font-size: var(--font-size-xl);
   font-weight: bold;
-  margin: 1rem 0 0.5rem 0;
+  margin: var(--spacing-sm) 0 var(--spacing-xs) 0;
   text-transform: uppercase;
-  letter-spacing: 0.02em;
+  letter-spacing: var(--letter-spacing-sm);
   color: var(--text-light);
-  transition: color 0.3s ease;
+  transition: color var(--transition-fast);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -169,10 +169,10 @@
 
 .main p {
   text-align: justify;
-  margin-bottom: 1rem;
-  font-size: 1rem;
+  margin-bottom: var(--spacing-sm);
+  font-size: var(--font-size-sm);
   color: var(--text-light);
-  transition: color 0.3s ease;
+  transition: color var(--transition-fast);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -184,32 +184,31 @@
 .supplementary {
   grid-area: supplementary;
   background: var(--bg-light);
-  padding: 1rem;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 2px;
-  transition: background-color 0.3s ease, border-color 0.3s ease,
-    box-shadow 0.3s ease;
+  padding: var(--spacing-sm);
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-light);
+  border-radius: var(--radius-small);
+  transition: var(--transition-full);
 }
 
 @media (prefers-color-scheme: dark) {
   .supplementary {
     background: var(--bg-dark);
-    border-color: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    border-color: var(--border-dark);
+    box-shadow: var(--shadow-dark);
   }
 }
 
 .supplementary h2 {
-  font-size: 1.2rem;
+  font-size: var(--font-size-lg);
   font-weight: bold;
   margin-bottom: 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 0.02em;
+  letter-spacing: var(--letter-spacing-sm);
   border-bottom: 2px solid var(--text-light);
   padding-bottom: 0.25rem;
   color: var(--text-light);
-  transition: border-color 0.3s ease, color 0.3s ease;
+  transition: border-color var(--transition-fast), color var(--transition-fast);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -220,13 +219,13 @@
 }
 
 .supplementary h3 {
-  font-size: 1rem;
+  font-size: var(--font-size-sm);
   font-weight: bold;
-  margin: 0.75rem 0 0.5rem 0;
+  margin: 0.75rem 0 var(--spacing-xs) 0;
   text-transform: uppercase;
-  letter-spacing: 0.01em;
+  letter-spacing: var(--letter-spacing-xs);
   color: var(--text-light);
-  transition: color 0.3s ease;
+  transition: color var(--transition-fast);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -236,11 +235,11 @@
 }
 
 .supplementary p {
-  font-size: 0.9rem;
+  font-size: var(--font-size-xs);
   text-align: justify;
   margin-bottom: 0.75rem;
   color: var(--text-light);
-  transition: color 0.3s ease;
+  transition: color var(--transition-fast);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -251,19 +250,23 @@
 
 .footer {
   grid-area: footer;
-  background: var(--text-light);
-  color: var(--bg-light);
-  padding: 1rem;
+  background: var(--bg-light);
+  color: var(--text-light);
+  padding: var(--spacing-sm);
   text-align: center;
-  font-size: 0.9rem;
-  border-radius: 2px;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  font-size: var(--font-size-xs);
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-light);
+  border-radius: var(--radius-small);
+  transition: var(--transition-full);
 }
 
 @media (prefers-color-scheme: dark) {
   .footer {
-    background: var(--text-dark);
-    color: var(--bg-dark);
+    background: var(--bg-dark);
+    color: var(--text-dark);
+    border-color: var(--border-dark);
+    box-shadow: var(--shadow-dark);
   }
 }
 
@@ -277,19 +280,19 @@
       "main"
       "supplementary"
       "footer";
-    gap: 0.5rem;
-    padding: 0.5rem;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-xs);
   }
 
   .main h1 {
-    font-size: 2rem;
+    font-size: var(--font-size-4xl);
   }
 
   .main h2 {
-    font-size: 1.5rem;
+    font-size: var(--font-size-2xl);
   }
 
   .main h3 {
-    font-size: 1.1rem;
+    font-size: var(--font-size-md);
   }
 }

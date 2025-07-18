@@ -1,0 +1,57 @@
+:root {
+  /* Color palette */
+  --eerie-black: #21201c;
+  --ivory: #f7faf0;
+  --ghost-white: #f8f4f9;
+  --orange: #e57a44;
+  --black: #050609;
+
+  /* Theme colors */
+  --bg-light: var(--ivory);
+  --bg-dark: var(--eerie-black);
+  --text-light: var(--black);
+  --text-dark: var(--ghost-white);
+
+  /* Borders & visual effects */
+  --border-light: rgba(0, 0, 0, 0.1);
+  --border-dark: rgba(255, 255, 255, 0.1);
+  --shadow-light: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-dark: 0 2px 4px rgba(0, 0, 0, 0.3);
+  --text-shadow-light: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  --text-shadow-dark: 2px 2px 4px rgba(0, 0, 0, 0.3);
+
+  /* Transitions */
+  --transition-fast: 0.3s ease;
+  --transition-colors: background-color var(--transition-fast),
+    color var(--transition-fast);
+  --transition-full: background-color var(--transition-fast),
+    border-color var(--transition-fast), box-shadow var(--transition-fast);
+
+  /* Layout */
+  --radius-small: 2px;
+
+  /* Spacing scale */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+
+  /* Typography scale */
+  --font-size-xs: 0.9rem;
+  --font-size-sm: 1rem;
+  --font-size-md: 1.1rem;
+  --font-size-lg: 1.2rem;
+  --font-size-xl: 1.3rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.8rem;
+  --font-size-4xl: 2rem;
+  --font-size-5xl: 2.5rem;
+  --font-size-6xl: 3.5rem;
+
+  /* Letter spacing scale */
+  --letter-spacing-xs: 0.01em;
+  --letter-spacing-sm: 0.02em;
+  --letter-spacing-md: 0.03em;
+  --letter-spacing-lg: 0.05em;
+  --letter-spacing-xl: 0.1em;
+}
